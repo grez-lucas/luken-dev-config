@@ -21,6 +21,7 @@ Some of these CLI tools are needed for certain plugins to work.
 ### Setup requires
 
 - [Installing ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) - For Oh-My-ZSH to work
+- [Installing Oh-My-Zsh](https://github.com/ohmyzsh/ohmyzsh)
 - Leaving the [.zshrc](.zshrc) file in your root directory
 
 ### Relevant files

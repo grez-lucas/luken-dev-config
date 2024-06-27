@@ -27,7 +27,14 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
+                "dockerls",
+                "cssls",
+                "eslint",
+                "docker_compose_language_service",
+                "html",
+                "tsserver",
+                "volar",
+                "tailwindcss",
             },
             handlers = {
                 function(server_name) -- default handler (optional)

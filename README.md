@@ -22,6 +22,11 @@ Some of these CLI tools are needed for certain plugins to work.
 
 - [Installing ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH) - For Oh-My-ZSH to work
 - [Installing Oh-My-Zsh](https://github.com/ohmyzsh/ohmyzsh)
+- Installing ZSH Plugins
+    - [ZSH Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+    - [ZSH Completions](https://github.com/zsh-users/zsh-completions)
+    - [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - [OMZ Autoupdate](https://github.com/tamcore/autoupdate-oh-my-zsh-plugins)
 - Leaving the [.zshrc](.zshrc) file in your root directory
 
 ### Relevant files

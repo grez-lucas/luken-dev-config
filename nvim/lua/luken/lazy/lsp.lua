@@ -11,10 +11,14 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "rafamadriz/friendly-snippets",
     },
 
     config = function()
         local cmp = require('cmp')
+
+        require("luasnip.loaders.from_vscode").lazy_load()
+
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",

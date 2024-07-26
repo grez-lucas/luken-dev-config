@@ -11,6 +11,16 @@ Some of these CLI tools are needed for certain plugins to work.
 - [bat](https://github.com/sharkdp/bat)
 - [delta](https://github.com/dandavison/delta)
 - [tldr](https://github.com/tldr-pages/tldr)
+- [stow]()
+
+### Post Cloning
+
+After cloning the repo, run:
+```bash
+stow --adopt .
+```
+
+To make `stow` create necessary symlinks.
 
 ### Relevant files
 

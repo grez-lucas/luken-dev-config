@@ -31,7 +31,7 @@ return {
         customize = nil,            -- customize the theme in any way you desire, see below what this
         -- configuration accepts
       })
-      vim.cmd("colorscheme cyberdream")
+      vim.cmd("colorscheme gruvbox-material")
     end
   },
 

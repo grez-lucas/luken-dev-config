@@ -13,10 +13,11 @@ configuration {
 
     foreground:                  rgba( 242, 229, 188, 1);
     foreground-alt:              #a89984;
-    background:                  rgba(40, 40, 40, 0.7);
-    selected-background:		 rgba(60, 56, 54, 0.7);
+    background:                  rgba(40, 40, 40, 1);
+    selected-background:		 rgba(60, 56, 54, 1);
     background-color:            transparent;
 }
+
 element {
     padding: 1px ;
     spacing: 5px ;
@@ -36,16 +37,11 @@ element-text {
     text-color:       var(foreground);
 }
 
-element-icon {
-    size:             24px;
-    text-color:       inherit;
-}
-
 window {
     padding:          350;
 	fullscreen:		  true;
     background-color: var(background);
-    padding:          380px 300px 400px 80px;
+    padding:          330px 300px 200px 80px;
 }
 
 textbox {
@@ -67,6 +63,7 @@ textbox-num-sep {
     str:        "/";
     text-color: var(foreground-alt);
 }
+
 inputbar {
     padding:    1px ;
     spacing:    0px ;
@@ -76,7 +73,7 @@ inputbar {
 
 entry {
     text-color:        var(foreground-alt);
-    placeholder:       " Search";
+    placeholder:       " Search applications...";
 }
 
 prompt {

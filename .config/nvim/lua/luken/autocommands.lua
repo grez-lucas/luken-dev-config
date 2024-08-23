@@ -13,7 +13,6 @@ autocmd("TextYankPost", {
     end
 })
 
-
 autocmd("LspAttach", {
   group = LukenGroup,
   callback = function(ev)

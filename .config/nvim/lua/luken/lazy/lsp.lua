@@ -33,6 +33,8 @@ return {
         ensure_installed = {
           "prettier",
           "prettierd",
+          "black",
+          "isort"
         }
       }
     })

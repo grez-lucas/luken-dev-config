@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autoupdate ssh-agent zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(git autoupdate ssh-agent zsh-autosuggestions zsh-completions zsh-syntax-highlighting asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -144,5 +144,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # For qt_platform stuff
 export QT_QPA_PLATFORM=xcb
-
 

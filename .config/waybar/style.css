@@ -12,73 +12,77 @@ Waybar Config File by Arfan Zubi
 */
 
 * {
-    font-family: 'MesloLGS Nerd Font', sans-serif;
-    font-size: 10px;
-    min-height: 0;
+  font-family: 'MesloLGS Nerd Font', sans-serif;
+  font-size: 10px;
+  min-height: 0;
 }
 
 window#waybar {
-    background: rgba(45, 53, 59, 0.0);
-    border: 2px solid rgba(61, 72, 77, 0.0);
-    color: #D3C6AA;
+  background: rgba(45, 53, 59, 0.0);
+  border: 2px solid rgba(61, 72, 77, 0.0);
+  color: #D3C6AA;
 }
 
-#window, #clock, #system, #keyboard, #hardware {
-    margin: 5px;
-    padding: 0 12px;
-    background-color: #272E33;
-    border: 2px solid #3D484D;
-    border-radius: 15px;
+#window,
+#clock,
+#system,
+#battery,
+#hardware {
+  margin: 5px;
+  padding: 0 12px;
+  background-color: #272E33;
+  border: 2px solid #3D484D;
+  border-radius: 15px;
 }
 
 #window {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #clock {
-    background-color: #A7C080;
-    border: 2px solid #2D353B;
-    color: #2D353B;
-    font-weight: bold;
+  background-color: #A7C080;
+  border: 2px solid #2D353B;
+  color: #2D353B;
+  font-weight: bold;
 }
 
 #workspaces {
-    margin-right: 10px;
-    font-weight: bold;
+  margin-right: 10px;
+  font-weight: bold;
 }
 
 #workspaces button {
-    border: none;
-    border-radius: 0;
-    color: #D3C6AA;
-    transition: all 0.3s ease-in-out;
+  border: none;
+  border-radius: 0;
+  color: #D3C6AA;
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-    background-color: #A7C080;
-    color: #2D353B;
-    transition: all 0.3s ease-in-out;
+  background-color: #A7C080;
+  color: #2D353B;
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.focused {
-    background-color: #A7C080;
+  background-color: #A7C080;
 }
 
 #workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background: #3D484D;
-    border: none;
-    color: #D3C6AA;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: #3D484D;
+  border: none;
+  color: #D3C6AA;
 }
 
-#keyboard-state {
-    margin-right: 7px;
+#battery {
+  margin-right: 7px;
 }
 
 #custom-wlogout {
-    margin-left: 7px;
-    padding: 0 15px;
-    background-color: #A7C080;
-    color: #2D353B;
+  margin-left: 7px;
+  padding: 0 15px;
+  background-color: #A7C080;
+  color: #2D353B;
 }

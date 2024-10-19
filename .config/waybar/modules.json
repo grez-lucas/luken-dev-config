@@ -63,16 +63,19 @@
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50
     },
-    "hyprland/language": {
-        "format": "<span foreground=\"#A7C080\">󰌌  </span> {short} <span foreground=\"#3D484D\">|</span>"
-    },
-    "keyboard-state": {
-        "capslock": true,
-        "format": " <span foreground=\"#A7C080\">󰪛  </span> {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+    "battery": {
+          "states": {
+              "good": 95,
+              "warning": 30,
+              "critical": 15
+          },
+          "format": "<span foreground=\"#A7C080\">{icon}  </span> {capacity}%",
+          "format-charging": "<span foreground=\"#A7C080\">🗲</span>   {capacity}%",
+          "format-plugged": "<span foreground=\"#A7C080\"></span>   {capacity}%",
+          "format-alt": "<span foreground=\"#A7C080\">{icon}  </span>   {capacity}%",
+          "format-good": "<span foreground=\"#A7C080\">{icon}</span>", 
+          "format-full": "<span foreground=\"#A7C080\">{icon}</span>",
+          "format-icons": ["", "", "", "", ""]
     },
     "disk": {
         "interval": 30,

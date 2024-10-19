@@ -16,7 +16,7 @@
 
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
-    "modules-right": ["group/system", "group/keyboard", "group/hardware", "custom/wlogout"],
+    "modules-right": ["group/system", "group/battery", "group/hardware", "custom/wlogout"],
 
     "group/system": {
         "orientation": "horizontal",
@@ -27,11 +27,10 @@
         ]
     },
 
-    "group/keyboard": {
+    "group/battery": {
         "orientation": "horizontal",
         "modules": [
-            "hyprland/language",
-            "keyboard-state"
+            "battery"
         ]
     },
 

@@ -46,7 +46,6 @@ return {
         "eslint",
         "docker_compose_language_service",
         "html",
-        "tsserver",
         "volar",
         "tailwindcss",
       },

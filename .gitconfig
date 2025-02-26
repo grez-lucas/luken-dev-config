@@ -3,3 +3,8 @@
 [user]
 	email = lucasgrez3010@gmail.com
 	name = grez-lucas
+	signingkey = /home/luken/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

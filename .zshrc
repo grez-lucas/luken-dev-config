@@ -145,3 +145,13 @@ export NVM_DIR="$HOME/.nvm"
 # For qt_platform stuff
 export QT_QPA_PLATFORM=xcb
 
+# Go Path
+export PATH=$(go env GOPATH)/bin:$PATH
+
+# Created by `pipx` on 2024-11-12 16:23:52
+export PATH="$PATH:/home/luken/.local/bin"
+# alias kubectl="minikube kubectl --"
+source <(kubectl completion zsh)
+
+# MESA VULKAN HEADERS
+export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=ls vulkaninfo

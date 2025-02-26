@@ -3,18 +3,28 @@ title = Dunst
 class = Dunst
 monitor = 0
 follow = mouse
-/*geometry = "350x6+24+60"*/
-geometry = "300x6-30+60" # top right
+
+width = 300
+
+# The maximum height of a single notification, excluding the frame.
+height = 300
+
+# Position the notification in the top right corner
+origin = top-right
+
+# Offset from the origin
+offset = 20x20
 indicate_hidden = yes
 shrink = yes
+
 
 transparency = 0
 separator_height = 2
 padding = 8
 horizontal_padding = 13
-frame_width = 8
-frame_color = "#1D2021"
-separator_color = "#32302f"
+frame_width = 4
+frame_color = "#323D43"
+separator_color = "#3c474d"
 
 font = Inconsolata Bold 10
 
@@ -40,7 +50,7 @@ max_icon_size = 96
 
 icon_path = /usr/share/icons/Papirus-Dark-Custom/48x48/actions/:/usr/share/icons/Papirus-Dark-Custom/48x48/apps/:/usr/share/icons/Papirus-Dark-Custom/48x48/devices/:/usr/share/icons/Papirus-Dark-Custom/48x48/emblems/:/usr/share/icons/Papirus-Dark-Custom/48x48/emotes/:/usr/share/icons/Papirus-Dark-Custom/48x48/mimetypes/:/usr/share/icons/Papirus-Dark-Custom/48x48/places/:/usr/share/icons/Papirus-Dark-Custom/48x48/status/
 
-browser = google-chrome-stable
+browser = firefox
 
 mouse_left_click = close_current
 mouse_middle_click = do_action
@@ -55,20 +65,20 @@ context = ctrl+shift+period
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1D2021"
-    foreground = "#ebdbb2"
+    background = "#323d43"
+    foreground = "#d8caac"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#1D2021"
-    foreground = "#ebdbb2"
+    background = "#323d43"
+    foreground = "#d8caac"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#1D2021"
-    foreground = "#ebdbb2"
+    background = "#323d43"
+    foreground = "#d8caac"
     timeout = 120

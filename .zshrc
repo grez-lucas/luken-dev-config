@@ -110,16 +110,41 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vim="~/nvim.appimage"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias k=kubectl
+alias kubectl=kubecolor
+alias bat=batcat
+
+if command -v kubectl >/dev/null; then
+  # Cache location for kubectl completions
+  KUBE_COMP="${XDG_CACHE_HOME:-$HOME/.cache}/kubectl_completion.zsh"
+  mkdir -p "${KUBE_COMP:h}"
+
+  # Generate completions if missing or kubectl binary changed
+  if [[ ! -f $KUBE_COMP || $(command -v kubectl) -nt $KUBE_COMP ]]; then
+    kubectl completion zsh >| "$KUBE_COMP"
+  fi
+
+  # Load completions
+  source "$KUBE_COMP"
+
+  # Map kubecolor's completion to kubectl (must be done after completions are loaded)
+  compdef kubecolor=kubectl
+fi
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$PATH:$HOME/.local/nvim-linux-x86_64/bin"
 
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+# Set up fuzzy auto-completion for Zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -142,16 +167,32 @@ _fzf_compgen_dir() {
 }
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Lazy load NVM (speeds up shell startup time tremendously)
+lazy_load_nvm() {
+  unset -f nvm node npm npx yarn pnpm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+# Define placeholders that trigger the real load on first use
+nvm() { lazy_load_nvm; nvm "$@"; }
+node() { lazy_load_nvm; node "$@"; }
+npm() { lazy_load_nvm; npm "$@"; }
+npx() { lazy_load_nvm; npx "$@"; }
+yarn() { lazy_load_nvm; yarn "$@"; }
+pnpm() { lazy_load_nvm; pnpm "$@"; }
 
 # For qt_platform stuff
 export QT_QPA_PLATFORM=xcb
 
 # Go Path
-export GOROOT=/usr/local/go
+# Do NOT export GOROOT. `go` infers it from its own location; hardcoding it
+# pinned the go1.27 driver first on PATH to the older toolchain sitting in
+# /usr/local/go, and every build died with
+#   compile: version "go1.24.0" does not match go tool version "go1.27.0"
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 	
 
 # Created by `pipx` on 2024-11-12 16:23:52
@@ -160,4 +201,28 @@ export PATH="$PATH:/home/luken/.local/bin"
 # source <(kubectl completion zsh)
 
 # MESA VULKAN HEADERS
-export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=ls vulkaninfo
+export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=1
+# Run "MESA_VK_DEVICE_SELECT=list vulkaninfo" to see your device list
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/luken/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# copy file/stdin to clipboard:  clip < file  |  cmd | clip
+alias clip='xclip -selection clipboard'
+
+# Android SDK
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+# Flutter SDK (installed 2026-08-12, stable 3.44.9, for poseperfect)
+export PATH="$HOME/development/flutter/bin:$PATH"
+# Binaries from `dart pub global activate`
+export PATH="$HOME/.pub-cache/bin:$PATH"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"

@@ -1,0 +1,11 @@
+# TPM clones every plugin (including tpm itself) as an upstream git repo.
+# Tracking them here produced gitlinks with no .gitmodules, which never clone.
+# Bootstrap on a new machine:
+#   git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+# then <prefix>+I inside tmux.
+.config/tmux/plugins/
+
+# Editor/terminal scratch. Files only, so a *.bak directory is not swallowed.
+*.bak
+!*.bak/
+*.log

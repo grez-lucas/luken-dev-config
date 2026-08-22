@@ -22,21 +22,23 @@ if [ -d "$NVM_DIR/versions/node" ]; then
   unset _nvm_default _nvm_node_dir
 fi
 
-# Go. Here rather than in ~/.zshrc because /etc/profile used to be what put a
-# `go` on PATH for non-interactive shells, and that line was removed along
-# with the old /usr/local/go install. Without this, `go` exists only in
-# interactive shells and anything nvim spawns (gopls, Mason, golangci-lint)
-# fails to find it when nvim is launched from a GUI rather than a terminal.
+# Go and other brew tools. Here rather than in ~/.zshrc because zsh sources
+# .zshrc only for interactive shells, and /etc/profile used to be what put a
+# `go` on PATH for everything else until the old /usr/local/go install was
+# removed. Without this, anything nvim shells out to (gopls, Mason,
+# golangci-lint, buf) fails to find its binary.
 #
-# brew's go@1.25 is the single Go install and is keg-only, so it needs an
-# explicit PATH entry. Do NOT export GOROOT; `go` infers it from its own
-# location, and hardcoding it once pinned a newer driver to an older
-# toolchain ("compile: version go1.24.0 does not match go tool version
-# go1.27.0").
+# brew's `go` formula is the single Go install. It is not keg-only, so adding
+# brew's bin dir covers go, buf and the rest in one entry. `brew shellenv` is
+# deliberately not eval'd here: it shells out, and this file runs on every
+# zsh invocation.
 #
-# GOTOOLCHAIN=local stops `go` downloading another toolchain into the module
-# cache when a go.mod names a newer version; on "auto" that had accumulated
-# 13 toolchains / 4.6G.
+# Do NOT export GOROOT; `go` infers it from its own location. Hardcoding it
+# once pinned a newer driver to an older toolchain:
+#   compile: version "go1.24.0" does not match go tool version "go1.27.0"
+#
+# GOTOOLCHAIN=local keeps the installed Go the only one that can ever run. On
+# "auto" the module cache had silently accumulated 13 toolchains / 4.6G.
 export GOPATH="$HOME/go"
 export GOTOOLCHAIN=local
-export PATH="/home/linuxbrew/.linuxbrew/opt/go@1.25/bin:$GOPATH/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$PATH"

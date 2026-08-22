@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autoupdate ssh-agent zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(git autoupdate ssh-agent zsh-autosuggestions zsh-completions zsh-syntax-highlighting asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,11 +109,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="~/nvim.appimage"
+# alias vim="~/nvim.appimage"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -145,4 +148,16 @@ export NVM_DIR="$HOME/.nvm"
 # For qt_platform stuff
 export QT_QPA_PLATFORM=xcb
 
+# Go Path
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+	
 
+# Created by `pipx` on 2024-11-12 16:23:52
+export PATH="$PATH:/home/luken/.local/bin"
+# alias kubectl="minikube kubectl --"
+# source <(kubectl completion zsh)
+
+# MESA VULKAN HEADERS
+export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=ls vulkaninfo

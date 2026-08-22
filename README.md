@@ -41,7 +41,13 @@ To make `stow` create necessary symlinks.
 
 ### Relevant files
 
-- [tmux.conf](tmux.conf) - Tmux Configuration File
+- [.config/tmux/tmux.conf](.config/tmux/tmux.conf) - Tmux configuration
+
+TPM and its plugins are gitignored. Bootstrap them on a new machine with:
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
+then press <kbd>prefix</kbd> + <kbd>I</kbd> inside tmux to install the rest.
 
 
 # Neovim Setup
@@ -53,85 +59,10 @@ If you are opening a lua file or another file I have language servers configured
 
 ### Relevant Files
 
-- [/nvim/lua/luken](/nvim/lua/luken) - Config files for Neovim
+- [.config/nvim](.config/nvim) - LazyVim configuration
 
 ### Setup requires
 
-- [Neovim](https://neovim.io/) (Version 0.9 or Later)
-- [Nerd Font](https://www.nerdfonts.com/) - I use Meslo Nerd Font
+- [Neovim](https://neovim.io/) (Version 0.10 or later)
+- [Nerd Font](https://www.nerdfonts.com/) - I use JetBrainsMono Nerd Font
 - [Ripgrep](https://github.com/BurntSushi/ripgrep) - For Telescope Fuzzy Finder
-
-## Keybindings
-
-#### Window Mangement
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>Q</kbd> | quit active/focused window
-| <kbd>Alt</kbd> + <kbd>F4</kbd> | kill window using cursor
-| <kbd>Super</kbd> + <kbd>W</kbd> | toggle window on focus to float
-| <kbd>Alt</kbd> + <kbd>Enter</kbd> | toggle window on focus to fullscreen
-| <kbd>Super</kbd> + <kbd>RightClick</kbd> | resize the window
-| <kbd>Super</kbd> + <kbd>LeftClick</kbd> | change the window position
-| <kbd>Alt</kbd> + <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>| switch the focus around active windows
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>| move/switch windows around active workspace
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd>| resize windows (hold)
-| <kbd>Super</kbd> + <kbd>J</kbd> | toggle dwindle
-
-#### Application Shortcuts
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>T</kbd> | launch kitty terminal
-| <kbd>Super</kbd> + <kbd>E</kbd> | launch dolphin file explorer
-| <kbd>Super</kbd> + <kbd>F</kbd> | launch firefox
-| <kbd>Super</kbd> + <kbd>D</kbd> | launch vencord (replace it with normal discord if u want)
-
-#### Widgets
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>Tab</kbd> | toggle sidebar
-| <kbd>Super</kbd> + <kbd>A</kbd> | toggle app launcher mode
-| <kbd>Super</kbd> + <kbd>C</kbd> | toggle command launcher mode
-
-#### Print Screen
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>P</kbd> | drag to select area or click on a window to print
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>P</kbd> | print current screen
-| <kbd>Super</kbd> + <kbd>Ctrl</kbd> + <kbd>P</kbd> | print current screen (frozen)
-
-#### Workspaces
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>MouseScroll</kbd> | cycle through workspaces
-| <kbd>Super</kbd> + <kbd>[0-5]</kbd> | switch to workspace [0-5]
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>[0-5]</kbd> | move active window to workspace [0-5]
-| <kbd>Super</kbd> + <kbd>Alt</kbd> + <kbd>[0-5]</kbd> | move active window to workspace [0-5] (silently)
-
-#### Special Workspace
-
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> | move window to special workspace
-| <kbd>Super</kbd> + <kbd>S</kbd> | toogle to special workspace
-
-#### Others
-| Keys | Action |
-| :--  | :-- |
-| <kbd>Super</kbd> + <kbd>L</kbd> | lock screen
-
-<br>
-
-## Command Mode Commands
-| Command | Description |
-| :--  | :-- |
-| <kbd>shutdown</kbd>| shudown pc
-| <kbd>restart</kbd>| restart pc
-| <kbd>suspend</kbd>| suspend & lock pc
-| <kbd>logout</kbd>| logout out hyprland session
-| <kbd>notif-clear</kbd>| clear notifications
-| <kbd>change-wallpaper</kbd>| open wallpapers menu

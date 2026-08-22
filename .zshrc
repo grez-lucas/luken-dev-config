@@ -187,21 +187,8 @@ pnpm() { lazy_load_nvm; pnpm "$@"; }
 export QT_QPA_PLATFORM=xcb
 
 # Go Path
-# One Go, one version. brew's go@1.25 is the single install; it is keg-only,
-# so it has to be put on PATH by hand and must come before $GOPATH/bin.
-#
-# Do NOT export GOROOT. `go` infers it from its own location, and hardcoding
-# it is what previously pinned a newer driver to an older toolchain:
-#   compile: version "go1.24.0" does not match go tool version "go1.27.0"
-#
-# GOTOOLCHAIN=local stops `go` silently downloading another toolchain into
-# the module cache when a go.mod names a newer version. Left on "auto" that
-# had accumulated 13 toolchains / 4.6G. Cost: `go install tool@latest` fails
-# outright if the tool needs a newer Go, instead of fetching one behind your
-# back. Fix that by installing a tool version that builds with 1.25.
-export GOPATH=$HOME/go
-export GOTOOLCHAIN=local
-export PATH="/home/linuxbrew/.linuxbrew/opt/go@1.25/bin:$GOPATH/bin:$PATH"
+# Go lives in ~/.zshenv so non-interactive shells (and anything nvim spawns)
+# can find it too. Nothing to set here.
 	
 
 # Created by `pipx` on 2024-11-12 16:23:52

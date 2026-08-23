@@ -5,8 +5,7 @@ local function ensure_node_on_path()
   if vim.fn.executable("node") == 1 then
     return
   end
-  local nvm_dir = (vim.env.NVM_DIR ~= nil and vim.env.NVM_DIR ~= "") and vim.env.NVM_DIR
-    or (vim.env.HOME .. "/.nvm")
+  local nvm_dir = (vim.env.NVM_DIR ~= nil and vim.env.NVM_DIR ~= "") and vim.env.NVM_DIR or (vim.env.HOME .. "/.nvm")
   local versions_dir = nvm_dir .. "/versions/node"
   if vim.fn.isdirectory(versions_dir) == 0 then
     return

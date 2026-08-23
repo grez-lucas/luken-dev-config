@@ -9,16 +9,27 @@ local function module_root(bufnr)
   return mod and vim.fs.dirname(mod) or nil
 end
 
--- Run a Makefile target from the directory holding the Makefile.
+-- Run a Makefile target from the repository root.
+--
+-- The nearest Makefile is the wrong one. ADR-0008 moves the contract targets
+-- out of backend/Makefile into a new root Makefile, and buf is invoked from the
+-- root so that check-gen's --output sandbox contains both generated trees. A
+-- buffer under backend/ still finds backend/Makefile first and would run the
+-- stale, or missing, target. The root Makefile is the one place these targets
+-- are defined, so anchor on the repository instead of on the buffer's depth.
 local function make(target)
   return function()
     local buf = vim.api.nvim_buf_get_name(0)
-    local mk = vim.fs.find("Makefile", { path = buf, upward = true })[1]
-    if not mk then
-      vim.notify("no Makefile above " .. buf, vim.log.levels.WARN)
+    local root = vim.fs.root(buf ~= "" and buf or assert(vim.uv.cwd()), ".git")
+    if not root then
+      vim.notify("not inside a git repository: " .. buf, vim.log.levels.WARN)
       return
     end
-    vim.cmd("botright split | resize 15 | terminal make -C " .. vim.fn.shellescape(vim.fs.dirname(mk)) .. " " .. target)
+    if vim.uv.fs_stat(vim.fs.joinpath(root, "Makefile")) == nil then
+      vim.notify("no Makefile at repository root " .. root, vim.log.levels.WARN)
+      return
+    end
+    vim.cmd("botright split | resize 15 | terminal make -C " .. vim.fn.shellescape(root) .. " " .. target)
     vim.cmd("startinsert")
   end
 end
@@ -62,9 +73,10 @@ return {
     "LazyVim/LazyVim",
     keys = {
       { "<leader>mc", make("contract"), desc = "make: contract (lint+breaking+check-gen)" },
-      { "<leader>ml", make("lint"), desc = "make: buf lint" },
-      { "<leader>mb", make("breaking"), desc = "make: buf breaking vs main" },
+      { "<leader>ml", make("proto-lint"), desc = "make: buf lint" },
+      { "<leader>mb", make("proto-breaking"), desc = "make: buf breaking vs main" },
       { "<leader>mg", make("generate"), desc = "make: buf generate" },
+      { "<leader>ms", make("setup"), desc = "make: setup (npm ci + go mod download + lefthook)" },
     },
   },
 }

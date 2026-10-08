@@ -172,7 +172,13 @@ export NVM_DIR="$HOME/.nvm"
 lazy_load_nvm() {
   unset -f nvm node npm npx yarn pnpm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  # nvm's completion registers through compdef, which writes into compinit's
+  # _comps map. Only load it where compinit actually ran: shells without that
+  # map (non-interactive, Claude Code's snapshot shell) otherwise print
+  # "compdef:153: _comps: assignment to invalid subscript range".
+  if [[ ${(t)_comps} == association* && -s "$NVM_DIR/bash_completion" ]]; then
+    \. "$NVM_DIR/bash_completion"
+  fi
 }
 
 # Define placeholders that trigger the real load on first use

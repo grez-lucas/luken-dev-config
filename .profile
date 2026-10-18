@@ -43,3 +43,4 @@ export PATH="/home/luken/.local/bin:$PATH"
 # brew's `go` formula is the single Go install and is not keg-only, so brew's
 # bin dir covers go, buf and the rest. Keep in step with ~/.zshenv.
 export PATH="/home/linuxbrew/.linuxbrew/bin:$HOME/go/bin:$PATH"
+. "$HOME/.cargo/env"

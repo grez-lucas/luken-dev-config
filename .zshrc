@@ -224,3 +224,8 @@ export PATH="$HOME/development/flutter/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
+# Rust path (installed by rustup)
+. "$HOME/.cargo/env"
+# export PATH="$HOME/.cargo/env"
+

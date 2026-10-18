@@ -42,3 +42,4 @@ fi
 export GOPATH="$HOME/go"
 export GOTOOLCHAIN=local
 export PATH="/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$PATH"
+. "$HOME/.cargo/env"

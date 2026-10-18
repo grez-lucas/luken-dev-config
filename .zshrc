@@ -225,10 +225,6 @@ export PATH="$HOME/.pub-cache/bin:$PATH"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
-# Rust path (installed by rustup)
-. "$HOME/.cargo/env"
-# export PATH="$HOME/.cargo/env"
-
 # Keep the machine awake while Claude Code runs (added 2026-08-30).
 # gnome-shell (mutter 46.2) NULL-derefs on the display-power transition after an
 # idle-triggered suspend, leaving the "Oh no! Something has gone wrong" lockdown

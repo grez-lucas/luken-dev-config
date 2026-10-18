@@ -42,4 +42,8 @@ fi
 export GOPATH="$HOME/go"
 export GOTOOLCHAIN=local
 export PATH="/home/linuxbrew/.linuxbrew/bin:$GOPATH/bin:$PATH"
+
+# rustup's ~/.cargo/bin. The only zsh copy: .zshrc runs after this file, and
+# ~/.cargo/env skips the prepend once the dir is on PATH. Keep in step with
+# ~/.profile.
 . "$HOME/.cargo/env"

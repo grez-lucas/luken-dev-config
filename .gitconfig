@@ -8,3 +8,7 @@
 	format = ssh
 [commit]
 	gpgsign = true
+# Machine-local work credentials and hosts. Untracked on purpose: this repo is
+# public. Git skips a missing include, so other machines are unaffected.
+[include]
+	path = ~/.config/git/work.gitconfig

@@ -229,3 +229,19 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 . "$HOME/.cargo/env"
 # export PATH="$HOME/.cargo/env"
 
+# Keep the machine awake while Claude Code runs (added 2026-08-30).
+# gnome-shell (mutter 46.2) NULL-derefs on the display-power transition after an
+# idle-triggered suspend, leaving the "Oh no! Something has gone wrong" lockdown
+# screen on top of an otherwise healthy desktop. Holding an idle+sleep inhibitor
+# for the lifetime of the process avoids the trigger.
+# Caveat: deliberate suspend (lid close, power menu) is blocked while Claude runs.
+claude() {
+  local bin
+  bin=$(whence -p claude) || { print -u2 "claude: not found in PATH"; return 127 }
+  if (( $+commands[systemd-inhibit] )); then
+    systemd-inhibit --what=idle:sleep --who=claude \
+      --why="Claude Code session running" --mode=block "$bin" "$@"
+  else
+    "$bin" "$@"
+  fi
+}

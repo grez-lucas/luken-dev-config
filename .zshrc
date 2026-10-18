@@ -202,10 +202,6 @@ export PATH="$PATH:/home/luken/.local/bin"
 # alias kubectl="minikube kubectl --"
 # source <(kubectl completion zsh)
 
-# MESA VULKAN HEADERS
-export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=1
-# Run "MESA_VK_DEVICE_SELECT=list vulkaninfo" to see your device list
-
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
